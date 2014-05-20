@@ -1,0 +1,22 @@
+default: &default
+  adapter: postgresql
+  host: localhost
+  template: template0
+
+development: &development
+  <<: *default
+  username: vagrant
+  password: vagrant
+  database: mobo
+
+test: &test
+  <<: *default
+  username: vagrant
+  password: vagrant
+  database: mobo
+
+production: &production
+  <<: *default
+  username: moonleer_booking
+  password: moonl33b00k
+  database: moonleer_mobo
