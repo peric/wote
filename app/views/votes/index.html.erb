@@ -1,0 +1,44 @@
+<% if current_user %>
+    <% if @random_website %>
+        <% upvote_url = upvote_path(@random_website) %>
+        <% downvote_url = downvote_path(@random_website) %>
+        <% if @success.nil? %>
+            <h1 class="text-center">Do you like this website?</h1>
+        <% elsif @success == 'true' %>
+            <h2 class="text-center">Hey, thanks for voting, keep on going.</h2>
+        <% else %>
+            <h2 class="text-center">Hm, looks like something went wrong - but keep on going anyway.</h2>
+        <% end %>
+        <div class="website-holder">
+            <form action="" method="get">
+                <div class="website"<% if @website_path %>style="background: url('<%= @website_path %>') no-repeat;"<% end %>>
+                    <div class="website-half-image vote-downvote" data-url="<%= downvote_url %>">
+                        <div class="overlay">
+                            <span class="character">✖</span>
+                        </div>
+                    </div>
+                    <div class="website-half-image vote-upvote" data-url="<%= upvote_url %>">
+                        <div class="overlay">
+                            <span class="character">✔</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center link-to-website">
+                    <%= link_to @random_website.url, @random_website.url, :target => "_blank" %>
+                </div>
+                <div class="vote-buttons text-center">
+                    <button type="button" class="btn btn-primary vote-button vote-downvote" data-url="<%= downvote_url %>">✖</button>
+                    <button type="button" class="btn btn-primary vote-button vote-upvote" data-url="<%= upvote_url %>">✔</button>
+                </div>
+            </form>
+        </div>
+    <% else %>
+        <h2 class="text-center">Whoooaah, looks like there's no more websites to vote for :(</h2>
+        <h2 class="text-center">But thanks for your help. srsly! ;)</h2>
+    <% end %>
+<% else %>
+    <h1 class="text-center">
+        Sorry, but you have to be logged in with Facebook to play.
+        <%= link_to "Click to login", "/auth/facebook", id: "sign_in" %>.
+    </h1>
+<% end %>

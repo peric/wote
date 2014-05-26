@@ -3,6 +3,14 @@ Rails.application.routes.draw do
   match 'auth/failure', to: redirect('/'), via: [:get, :post]
   match 'signout', to: 'sessions#destroy', as: 'signout', via: [:get, :post]
 
+  root :to => 'votes#index'
+
+  get "/website/:website_id/upvote" => "votes#upvote", as: 'upvote'
+
+  get "/website/:website_id/downvote" => "votes#downvote", as: 'downvote'
+
+  match "why" => "votes#why", as: 'why', via: [:get, :post]
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

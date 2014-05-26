@@ -1,11 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  url: MyString
+  url: www.google.com
   category: MyString
   screenshot: MyString
 
 two:
-  url: MyString
+  url: www.najdi.si
   category: MyString
   screenshot: MyString

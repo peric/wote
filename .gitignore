@@ -27,3 +27,5 @@ config/secrets.yml
 
 # editor
 .idea
+
+/public/images

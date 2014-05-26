@@ -12,4 +12,52 @@
  *
  *= require_tree .
  *= require_self
+ *= require bootstrap.min
  */
+.jumbotron a:hover, a:focus {
+    text-decoration: none;
+}
+.website-holder {
+    overflow: auto;
+    width: 100%;
+    margin-top: 20px;
+}
+.website-holder .website {
+    margin: 0 auto;
+    text-align: center;
+    width: 1000px;
+    height: 1000px;
+    background: url('http://placehold.it/1000x1000') no-repeat;
+}
+.website-holder .link-to-website {
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+.website-holder .vote-button {
+    margin-top: 10px;
+    padding: 0 100px;
+    font-size: 50px;
+}
+.website-holder .website .website-half-image .overlay {
+    background: rgba(0,0,0,0);
+    text-align: center;
+    height: 100%;
+    opacity: 0;
+    padding-top: 300px;
+}
+.website-holder .website .website-half-image {
+    width: 50%;
+    height: 100%;
+    float: left;
+    cursor: pointer;
+}
+.website-holder .website .website-half-image:hover .overlay {
+    opacity: 1;
+}
+.character {
+    font-family: Helvetica;
+    font-weight: 900;
+    color: rgba(255,255,255,.85);
+    font-size: 96px;
+    height: 100%;
+}
