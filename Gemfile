@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+ruby "2.1.1"
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.1'
 # Use postgre as the database for Active Record
@@ -29,20 +31,6 @@ gem 'spring',        group: :development
 gem 'omniauth'
 gem 'omniauth-facebook', '1.4.0'
 
-# for screenshots and stuff
-gem 'capybara'
-gem 'capybara-webkit'
-
 gem 'webshot'
 
-# Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
-
-# Use unicorn as the app server
-# gem 'unicorn'
-
-# Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
-
-# Use debugger
-# gem 'debugger', group: [:development, :test]
+gem 'rails_12factor', group: :production

@@ -21,6 +21,7 @@ class VotesController < ApplicationController
       end
     end
 
+
     # TODO: User settings
     # TODO: Keep showing pages forever, but put them somewhere after they reach 10 votes - export them somewhere or put them to other table
   end

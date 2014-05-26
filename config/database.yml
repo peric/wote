@@ -1,6 +1,7 @@
 default: &default
   adapter: postgresql
   host: localhost
+  encoding: unicode
   template: template0
 
 development: &development
@@ -9,14 +10,8 @@ development: &development
   password: vagrant
   database: wote
 
-test: &test
-  <<: *default
-  username: vagrant
-  password: vagrant
-  database: wote
-
-production: &production
-  <<: *default
-  username: ~
-  password: ~
-  database: wote
+#production: &production
+#  <<: *default
+#  username: ~
+#  password: ~
+#  database: wote
