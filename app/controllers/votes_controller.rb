@@ -84,8 +84,7 @@ class VotesController < ApplicationController
       websites = Website.where("websites.id NOT IN (SELECT website_id FROM Votes WHERE user_id=#{user.id})")
 
       if websites.count() > 0
-        @random_website = websites.first
-        # TODO: shuffle maybe
+        @random_website = websites.shuffle.first
       end
     end
 
