@@ -1,10 +1,10 @@
 class VotesController < ApplicationController
   def index
-    user = current_user()
-    user_votes = Vote.where(:user => user)
+    @user = current_user()
+    user_votes = Vote.where(:user => @user)
 
     if user_votes.count > 0 || params[:understand]
-      @random_website = get_random_website(user)
+      @random_website = get_random_website(@user)
       @success = params[:success]
       @website_path = nil
 
@@ -25,8 +25,13 @@ class VotesController < ApplicationController
         end
       end
     else
-      @show_next = true
-      render :template => "votes/faq"
+      if @user
+        # renders faq just when user is logged in
+        @show_next = true
+        render :template => "votes/faq"
+      else
+        return
+      end
     end
   end
 
@@ -41,6 +46,7 @@ class VotesController < ApplicationController
     # TODO: Keep showing pages forever, but put them somewhere after they reach 10 votes - export them somewhere or put them to other table
     # TODO: make something in case screenshot fails
     # TODO: Stop when there's 3000 votes or one month passes
+
 
     respond_to do |format|
       begin

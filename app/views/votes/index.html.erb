@@ -1,4 +1,4 @@
-<% if current_user %>
+<% if @user %>
     <% if @random_website %>
         <% upvote_url = upvote_path(@random_website) %>
         <% downvote_url = downvote_path(@random_website) %>
