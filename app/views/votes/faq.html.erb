@@ -10,3 +10,14 @@
     <h3>More tips?</h3>
     <p>Well, try to not be related to websites too personally - I just want to know whether you like visual design of it or not.</p>
 </div>
+
+<% if @show_next %>
+    <div class="text-center">
+        <a class="btn btn-primary ladda-button understand" data-style="expand-left" href="<%= root_path(:understand => 'true') %>">
+            <span class="ladda-label">I understand</span>
+        </a>
+        <span style="display: block; margin-top: 10px;">
+            Click the button to continue... (and yes, you can always come back here by clicking to "FAQ")
+        </span>
+    </div>
+<% end %>
