@@ -3,7 +3,7 @@
         <% upvote_url = upvote_path(@random_website) %>
         <% downvote_url = downvote_path(@random_website) %>
         <% if @success.nil? %>
-            <h1 class="text-center">Do you like this website?</h1>
+            <h1 class="text-center">Do you find this webpage design attractive?</h1>
         <% elsif @success == 'true' %>
             <h2 class="text-center">Hey, thanks for voting, keep on going.</h2>
         <% else %>
@@ -11,24 +11,36 @@
         <% end %>
         <div class="website-holder">
             <form action="" method="get">
+                <div class="vote-buttons vote-buttons-top text-center">
+                    <button type="button" class="btn btn-primary vote-button vote-downvote" data-url="<%= downvote_url %>">
+                        <span class="glyphicon glyphicon-thumbs-down"></span>
+                    </button>
+                    <button type="button" class="btn btn-primary vote-button vote-upvote" data-url="<%= upvote_url %>">
+                        <span class="glyphicon glyphicon-thumbs-up"></span>
+                    </button>
+                </div>
                 <div class="website"<% if @website_path %>style="background: url('<%= @website_path %>') no-repeat;"<% end %>>
                     <div class="website-half-image vote-downvote" data-url="<%= downvote_url %>">
                         <div class="overlay">
-                            <span class="character">✖</span>
+                            <span class="glyphicon glyphicon-thumbs-down character"></span>
                         </div>
                     </div>
                     <div class="website-half-image vote-upvote" data-url="<%= upvote_url %>">
                         <div class="overlay">
-                            <span class="character">✔</span>
+                            <span class="glyphicon glyphicon-thumbs-up character"></span>
                         </div>
                     </div>
                 </div>
+                <div class="vote-buttons vote-buttons-bottom text-center">
+                    <button type="button" class="btn btn-primary vote-button vote-downvote" data-url="<%= downvote_url %>">
+                        <span class="glyphicon glyphicon-thumbs-down"></span>
+                    </button>
+                    <button type="button" class="btn btn-primary vote-button vote-upvote" data-url="<%= upvote_url %>">
+                        <span class="glyphicon glyphicon-thumbs-up"></span>
+                    </button>
+                </div>
                 <div class="text-center link-to-website">
                     <%= link_to @random_website.url, @random_website.url, :target => "_blank" %>
-                </div>
-                <div class="vote-buttons text-center">
-                    <button type="button" class="btn btn-primary vote-button vote-downvote" data-url="<%= downvote_url %>">✖</button>
-                    <button type="button" class="btn btn-primary vote-button vote-upvote" data-url="<%= upvote_url %>">✔</button>
                 </div>
             </form>
         </div>

@@ -33,10 +33,18 @@
     margin-top: 20px;
     margin-bottom: 10px;
 }
-.website-holder .vote-button {
+.website-holder .vote-buttons-top {
+    margin-bottom: 10px;
+}
+.website-holder .vote-buttons-bottom {
     margin-top: 10px;
+}
+.website-holder .vote-button {
     padding: 0 100px;
     font-size: 50px;
+}
+.website-holder .vote-button span {
+    padding-top: 20px;
 }
 .website-holder .website .website-half-image .overlay {
     background: rgba(0,0,0,0);
