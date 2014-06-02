@@ -1,5 +1,5 @@
-<% if @user %>
-    <% if @random_website %>
+<% if current_user() %>
+    <% if @random_website && @all_votes_count <= 3000 %>
         <% upvote_url = upvote_path(@random_website) %>
         <% downvote_url = downvote_path(@random_website) %>
         <% if @success.nil? %>
@@ -19,7 +19,7 @@
                         <span class="glyphicon glyphicon-thumbs-up"></span>
                     </button>
                 </div>
-                <div class="website"<% if @website_path %>style="background: url('<%= @website_path %>') no-repeat;"<% end %>>
+                <div class="website"<% if @random_website.screenshot %>style="background: url('<%= @random_website.screenshot %>') no-repeat;"<% end %>>
                     <div class="website-half-image vote-downvote" data-url="<%= downvote_url %>">
                         <div class="overlay">
                             <span class="glyphicon glyphicon-thumbs-down character"></span>

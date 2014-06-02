@@ -1,27 +1,27 @@
 class VotesController < ApplicationController
   def index
+    # this stops when 3000 votes is collected
+
     @user = current_user()
     user_votes = Vote.where(:user => @user)
+    @all_votes_count = Vote.all.count
 
     if user_votes.count > 0 || params[:understand]
       @random_website = get_random_website(@user)
       @success = params[:success]
-      @website_path = nil
 
       if @random_website
         if @random_website.screenshot.nil?
           website_url    = @random_website.url
           directory_path = 'images/'
-          @website_path  = directory_path + @random_website.url.gsub('http://www', '').gsub(/(\W|\d)/, "") + '.png'
+          website_path  = directory_path + @random_website.url.gsub('http://www', '').gsub(/(\W|\d)/, "") + '.png'
 
           ws = Webshot::Screenshot.instance
 
-          ws.capture website_url, 'public/' + @website_path, width: 1000, height: 1000, quality: 95
+          ws.capture website_url, 'public/' + website_path, width: 1000, height: 1000, quality: 95
 
-          @random_website.screenshot = @website_path
+          @random_website.screenshot = website_path
           @random_website.save!
-        else
-          @website_path = @random_website.screenshot
         end
       end
     else
@@ -43,10 +43,7 @@ class VotesController < ApplicationController
     @vote.user = current_user()
     @vote.upvote = true
 
-    # TODO: Keep showing pages forever, but put them somewhere after they reach 10 votes - export them somewhere or put them to other table
     # TODO: make something in case screenshot fails
-    # TODO: Stop when there's 3000 votes or one month passes
-
 
     respond_to do |format|
       begin
