@@ -34,3 +34,5 @@ gem 'omniauth-facebook', '1.4.0'
 gem 'webshot'
 
 gem 'rails_12factor', group: :production
+
+gem 'newrelic_rpm'
