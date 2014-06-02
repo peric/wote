@@ -26,5 +26,3 @@ config/initializers/secret_token.rb
 
 # editor
 .idea
-
-/public/images
