@@ -8,15 +8,16 @@ class VotesController < ApplicationController
 
     if user_votes.count > 0 || params[:understand]
       @random_website = get_random_website(@user)
-
-      screenshot = 'http://dl.dropboxusercontent.com/u/2425826/wote/images/' + @random_website.url.gsub('http://www', '').gsub(/(\W|\d)/, '') + '.png'
-
-      unless @random_website.screenshot == screenshot
-        @random_website.screenshot = 'http://dl.dropboxusercontent.com/u/2425826/wote/images/' + @random_website.url.gsub('http://www', '').gsub(/(\W|\d)/, '') + '.png'
-        @random_website.save!
-      end
-
       @success = params[:success]
+
+      if @random_website
+        screenshot = 'http://dl.dropboxusercontent.com/u/2425826/wote/images/' + @random_website.url.gsub('http://www', '').gsub(/(\W|\d)/, '') + '.png'
+
+        unless @random_website.screenshot == screenshot
+          @random_website.screenshot = 'http://dl.dropboxusercontent.com/u/2425826/wote/images/' + @random_website.url.gsub('http://www', '').gsub(/(\W|\d)/, '') + '.png'
+          @random_website.save!
+        end
+      end
     else
       if @user
         # renders faq just when user is logged in
