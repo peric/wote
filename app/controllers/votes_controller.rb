@@ -1,38 +1,31 @@
 class VotesController < ApplicationController
   def index
-    # this stops when 3000 votes is collected
+    # TODO: this stops when 3000 votes is collected
 
     @user = current_user()
     user_votes = Vote.where(:user => @user)
     @all_votes_count = Vote.all.count
 
-    #if user_votes.count > 0 || params[:understand]
-    #  @random_website = get_random_website(@user)
-    #  @success = params[:success]
-    #
-    #  if @random_website
-    #    if @random_website.screenshot.nil?
-    #      website_url    = @random_website.url
-    #      directory_path = 'images/'
-    #      website_path  = directory_path + @random_website.url.gsub('http://www', '').gsub(/(\W|\d)/, "") + '.png'
-    #
-    #      ws = Webshot::Screenshot.instance
-    #
-    #      ws.capture website_url, 'public/' + website_path, width: 1000, height: 1000, quality: 95
-    #
-    #      @random_website.screenshot = website_path
-    #      @random_website.save!
-    #    end
-    #  end
-    #else
-    #  if @user
+    if user_votes.count > 0 || params[:understand]
+      @random_website = get_random_website(@user)
+
+      screenshot = 'http://dl.dropboxusercontent.com/u/2425826/wote/images/' + @random_website.url.gsub('http://www', '').gsub(/(\W|\d)/, '') + '.png'
+
+      unless @random_website.screenshot == screenshot
+        @random_website.screenshot = 'http://dl.dropboxusercontent.com/u/2425826/wote/images/' + @random_website.url.gsub('http://www', '').gsub(/(\W|\d)/, '') + '.png'
+        @random_website.save!
+      end
+
+      @success = params[:success]
+    else
+      if @user
         # renders faq just when user is logged in
-        #@show_next = true
+        @show_next = true
         render :template => "votes/faq"
-    #  else
-    #    return
-    #  end
-    #end
+      else
+        return
+      end
+    end
   end
 
   def upvote
@@ -72,6 +65,26 @@ class VotesController < ApplicationController
       end
     end
   end
+
+  #def generate_all
+  #  websites = Website.all
+  #
+  #  websites.each do |website|
+  #    begin
+  #      website_url = website.url
+  #      directory_path = 'images/'
+  #      website_path  = directory_path + website_url.gsub('http://www', '').gsub(/(\W|\d)/, "") + '.png'
+  #
+  #      unless File.exist?('public/' + website_path)
+  #        ws = Webshot::Screenshot.instance
+  #
+  #        ws.capture website_url, 'public/' + website_path, width: 1000, height: 1000, quality: 95
+  #      end
+  #    rescue Exception => ex
+  #      next
+  #    end
+  #  end
+  #end
 
   def faq
 

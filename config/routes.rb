@@ -11,6 +11,8 @@ Rails.application.routes.draw do
 
   match "faq" => "votes#faq", as: 'faq', via: [:get, :post]
 
+  #match "generate_all" => "votes#generate_all", via: [:get, :post]
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
