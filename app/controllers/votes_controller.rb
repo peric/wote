@@ -3,10 +3,11 @@ class VotesController < ApplicationController
     # TODO: this stops when 3000 votes is collected
 
     @user = current_user()
-    user_votes = Vote.where(:user => @user)
-    @all_votes_count = Vote.all.count
+    user_votes_count = Vote.where(:user => @user).count
+    @user_votes_left = Website.all.count - user_votes_count
+    # @all_votes_count = Vote.all.count
 
-    if user_votes.count > 0 || params[:understand]
+    if user_votes_count > 0 || params[:understand]
       @random_website = get_random_website(@user)
       @success = params[:success]
 

@@ -5,7 +5,7 @@
         <% if @success.nil? %>
             <h1 class="text-center">Do you find this webpage design attractive?</h1>
         <% elsif @success == 'true' %>
-            <h2 class="text-center">Hey, thanks for voting, keep on going.</h2>
+            <h2 class="text-center">Hey, thanks for voting, keep on going. There is <%= @user_votes_left %> websites left to vote.</h2>
         <% else %>
             <h2 class="text-center">Hm, looks like something went wrong - but keep on going anyway.</h2>
         <% end %>
