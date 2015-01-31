@@ -1,28 +1,26 @@
-== README
+# Prerequisites
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+- Ruby
+- Rails
 
-Things you may want to cover:
+# Install & run
 
-* Ruby version
+## Install gems
 
-* System dependencies
+```
+bundle install
+```
 
-* Configuration
+## Setup database
 
-* Database creation
+```
+rake db:create
+rake db:migrate
+rake db:seed
+```
 
-* Database initialization
+## Run rails
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+```
+rails s
+```
