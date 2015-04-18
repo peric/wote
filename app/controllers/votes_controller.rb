@@ -1,7 +1,5 @@
 class VotesController < ApplicationController
   def index
-    # TODO: this stops when 3000 votes is collected
-
     @user = current_user()
     user_votes_count = Vote.where(:user => @user).count
     @user_votes_left = Website.all.count - user_votes_count
@@ -37,8 +35,6 @@ class VotesController < ApplicationController
     @vote.website = @website
     @vote.user = current_user()
     @vote.upvote = true
-
-    # TODO: make something in case screenshot fails
 
     respond_to do |format|
       begin
